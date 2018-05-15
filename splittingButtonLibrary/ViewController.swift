@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
     
     let buttonCount = 4
+    var buttonArray: [UIButton] = []
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,35 +57,35 @@ class ViewController: UIViewController {
     private func create6Buttons(frame: CGRect) {
         
         for i in 0...5 {
-            let view = UIButton(frame: CGRect(x: self.view.frame.width / 2 - 20, y: self.view.frame.height / 2 - 20, width: 40, height: 40))
-            view.backgroundColor = .red
+            let newButton = UIButton(frame: CGRect(x: self.view.frame.width / 2 - 20, y: self.view.frame.height / 2 - 20, width: 40, height: 40))
+            newButton.backgroundColor = .red
             
-            view.layer.cornerRadius = 15
-            self.view.addSubview(view)
+            newButton.layer.cornerRadius = 15
+            self.view.addSubview(newButton)
             
             if i == 0 {
                 UIView.animate(withDuration: 0.5) {
-                    view.frame = CGRect(x: view.frame.minX, y: view.frame.minY - 60, width: view.frame.width, height: view.frame.height)
+                    newButton.frame = CGRect(x: newButton.frame.minX, y: newButton.frame.minY - 60, width: newButton.frame.width, height: newButton.frame.height)
                 }
             } else if i == 1 {
                 UIView.animate(withDuration: 0.5) {
-                    view.frame = CGRect(x: view.frame.minX + 60, y: view.frame.minY - 30, width: view.frame.width, height: view.frame.height)
+                    newButton.frame = CGRect(x: newButton.frame.minX + 60, y: newButton.frame.minY - 30, width: newButton.frame.width, height: newButton.frame.height)
                 }
             } else if i == 2 {
                 UIView.animate(withDuration: 0.5) {
-                    view.frame = CGRect(x: view.frame.minX + 60, y: view.frame.minY + 30, width: view.frame.width, height: view.frame.height)
+                    newButton.frame = CGRect(x: newButton.frame.minX + 60, y: newButton.frame.minY + 30, width: newButton.frame.width, height: newButton.frame.height)
                 }
             } else if i == 3 {
                 UIView.animate(withDuration: 0.5) {
-                    view.frame = CGRect(x: view.frame.minX, y: view.frame.minY + 60, width: view.frame.width, height: view.frame.height)
+                    newButton.frame = CGRect(x: newButton.frame.minX, y: newButton.frame.minY + 60, width: newButton.frame.width, height: newButton.frame.height)
                 }
             } else if i == 4 {
                 UIView.animate(withDuration: 0.5) {
-                    view.frame = CGRect(x: view.frame.minX - 60, y: view.frame.minY + 30, width: view.frame.width, height: view.frame.height)
+                    newButton.frame = CGRect(x: newButton.frame.minX - 60, y: newButton.frame.minY + 30, width: newButton.frame.width, height: newButton.frame.height)
                 }
             } else if i == 5 {
                 UIView.animate(withDuration: 0.5) {
-                    view.frame = CGRect(x: view.frame.minX - 60, y: view.frame.minY - 30, width: view.frame.width, height: view.frame.height)
+                    newButton.frame = CGRect(x: newButton.frame.minX - 60, y: newButton.frame.minY - 30, width: newButton.frame.width, height: newButton.frame.height)
                 }
             }
         }
@@ -92,27 +94,29 @@ class ViewController: UIViewController {
     private func create4Buttons(frame: CGRect) {
         
         for i in 0...3 {
-            let view = UIButton(frame: CGRect(x: self.view.frame.width / 2 - 20, y: self.view.frame.height / 2 - 20, width: 40, height: 40))
-            view.backgroundColor = .red
+            let newButton = UIButton(frame: CGRect(x: self.view.frame.width / 2 - 20, y: self.view.frame.height / 2 - 20, width: 40, height: 40))
+            newButton.backgroundColor = .red
             
-            view.layer.cornerRadius = 15
-            self.view.addSubview(view)
+            newButton.layer.cornerRadius = 15
+            self.view.addSubview(newButton)
+            
+            buttonArray.append(newButton)
             
             if i == 0 {
                 UIView.animate(withDuration: 0.5) {
-                    view.frame = CGRect(x: view.frame.minX, y: view.frame.minY - 60, width: view.frame.width, height: view.frame.height)
+                    newButton.frame = CGRect(x: newButton.frame.minX, y: newButton.frame.minY - 60, width: newButton.frame.width, height: newButton.frame.height)
                 }
             } else if i == 1 {
                 UIView.animate(withDuration: 0.5) {
-                    view.frame = CGRect(x: view.frame.minX + 60, y: view.frame.minY, width: view.frame.width, height: view.frame.height)
+                    newButton.frame = CGRect(x: newButton.frame.minX + 60, y: newButton.frame.minY, width: newButton.frame.width, height: newButton.frame.height)
                 }
             } else if i == 2 {
                 UIView.animate(withDuration: 0.5) {
-                    view.frame = CGRect(x: view.frame.minX, y: view.frame.minY + 60, width: view.frame.width, height: view.frame.height)
+                    newButton.frame = CGRect(x: newButton.frame.minX, y: newButton.frame.minY + 60, width: newButton.frame.width, height: newButton.frame.height)
                 }
             } else if i == 3 {
                 UIView.animate(withDuration: 0.5) {
-                    view.frame = CGRect(x: view.frame.minX - 60, y: view.frame.minY, width: view.frame.width, height: view.frame.height)
+                    newButton.frame = CGRect(x: newButton.frame.minX - 60, y: newButton.frame.minY, width: newButton.frame.width, height: newButton.frame.height)
                 }
             }
         }
@@ -122,23 +126,25 @@ class ViewController: UIViewController {
         
         for i in 0...2 {
             
-            let view = UIButton(frame: CGRect(x: self.view.frame.width / 2 - 20, y: self.view.frame.height / 2 - 20, width: 40, height: 40))
-            view.backgroundColor = .red
+            let newButton = UIButton(frame: CGRect(x: self.view.frame.width / 2 - 20, y: self.view.frame.height / 2 - 20, width: 40, height: 40))
+            newButton.backgroundColor = .red
             
-            view.layer.cornerRadius = 15
-            self.view.addSubview(view)
+            newButton.layer.cornerRadius = 15
+            self.view.addSubview(newButton)
+            
+            buttonArray.append(newButton)
             
             if i == 0 {
                 UIView.animate(withDuration: 0.5) {
-                    view.frame = CGRect(x: view.frame.minX, y: view.frame.minY - 60, width: view.frame.width, height: view.frame.height)
+                    newButton.frame = CGRect(x: newButton.frame.minX, y: newButton.frame.minY - 60, width: newButton.frame.width, height: newButton.frame.height)
                 }
             } else if i == 1 {
                 UIView.animate(withDuration: 0.5) {
-                    view.frame = CGRect(x: view.frame.minX + 60, y: view.frame.minY + 40, width: view.frame.width, height: view.frame.height)
+                    newButton.frame = CGRect(x: newButton.frame.minX + 60, y: newButton.frame.minY + 40, width: newButton.frame.width, height: newButton.frame.height)
                 }
             } else if i == 2 {
                 UIView.animate(withDuration: 0.5) {
-                    view.frame = CGRect(x: view.frame.minX - 60, y: view.frame.minY + 40, width: view.frame.width, height: view.frame.height)
+                    newButton.frame = CGRect(x: newButton.frame.minX - 60, y: newButton.frame.minY + 40, width: newButton.frame.width, height: newButton.frame.height)
                 }
             }
         }
@@ -148,19 +154,21 @@ class ViewController: UIViewController {
         
         for i in 0...1 {
             
-            let view = UIButton(frame: CGRect(x: self.view.frame.width / 2 - 20, y: self.view.frame.height / 2 - 20, width: 40, height: 40))
-            view.backgroundColor = .red
+            let newButton = UIButton(frame: CGRect(x: self.view.frame.width / 2 - 20, y: self.view.frame.height / 2 - 20, width: 40, height: 40))
+            newButton.backgroundColor = .red
             
-            view.layer.cornerRadius = 15
-            self.view.addSubview(view)
+            newButton.layer.cornerRadius = 15
+            self.view.addSubview(newButton)
+            
+            buttonArray.append(newButton)
             
             if i == 0 {
                 UIView.animate(withDuration: 0.5) {
-                    view.frame = CGRect(x: view.frame.minX + 60, y: view.frame.minY, width: view.frame.width, height: view.frame.height)
+                    newButton.frame = CGRect(x: newButton.frame.minX + 60, y: newButton.frame.minY, width: newButton.frame.width, height: newButton.frame.height)
                 }
             } else if i == 1 {
                 UIView.animate(withDuration: 0.5) {
-                    view.frame = CGRect(x: view.frame.minX - 60, y: view.frame.minY, width: view.frame.width, height: view.frame.height)
+                    newButton.frame = CGRect(x: newButton.frame.minX - 60, y: newButton.frame.minY, width: newButton.frame.width, height: newButton.frame.height)
                 }
             }
         }
