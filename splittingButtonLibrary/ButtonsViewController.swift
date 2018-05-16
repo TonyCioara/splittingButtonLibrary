@@ -16,7 +16,7 @@ class ButtonsViewController: UIViewController {
         let frame = CGRect(x: self.view.frame.midX - 15, y: self.view.frame.midY - 15, width: 30, height: 30)
         var buttonArray: [UIButton] = []
         
-        for i in 1...8 {
+        for _ in 1...7 {
             let button = UIButton(frame: frame)
             button.backgroundColor = UIColor.red
             buttonArray.append(button)
@@ -158,6 +158,16 @@ class SplittingButton: UIButton {
     }
     
     private func createSevenButtons() {
+        
+        UIView.animate(withDuration: 0.5) {
+            self.buttonArray[0].frame = CGRect(x: self.buttonArray[0].frame.minX, y: self.buttonArray[0].frame.minY - 60, width: self.buttonArray[0].frame.width, height: self.buttonArray[0].frame.height)
+            self.buttonArray[1].frame = CGRect(x: self.buttonArray[1].frame.minX + 50, y: self.buttonArray[1].frame.minY - 40, width: self.buttonArray[1].frame.width, height: self.buttonArray[1].frame.height)
+            self.buttonArray[2].frame = CGRect(x: self.buttonArray[2].frame.minX + 60, y: self.buttonArray[2].frame.minY + 15, width: self.buttonArray[2].frame.width, height: self.buttonArray[2].frame.height)
+            self.buttonArray[3].frame = CGRect(x: self.buttonArray[3].frame.minX + 30, y: self.buttonArray[3].frame.minY + 60, width: self.buttonArray[3].frame.width, height: self.buttonArray[3].frame.height)
+            self.buttonArray[4].frame = CGRect(x: self.buttonArray[4].frame.minX - 30, y: self.buttonArray[4].frame.minY + 60, width: self.buttonArray[4].frame.width, height: self.buttonArray[4].frame.height)
+            self.buttonArray[5].frame = CGRect(x: self.buttonArray[5].frame.minX - 60, y: self.buttonArray[5].frame.minY + 15, width: self.buttonArray[5].frame.width, height: self.buttonArray[5].frame.height)
+            self.buttonArray[6].frame = CGRect(x: self.buttonArray[6].frame.minX - 50, y: self.buttonArray[6].frame.minY - 40, width: self.buttonArray[6].frame.width, height: self.buttonArray[6].frame.height)
+        }
     }
     
     private func createEightButtons() {
@@ -175,8 +185,35 @@ class SplittingButton: UIButton {
     }
     
     private func createNineButtons() {
+        //        TODO: Fix values
+        
+        UIView.animate(withDuration: 0.5) {
+            self.buttonArray[0].frame = CGRect(x: self.buttonArray[0].frame.minX, y: self.buttonArray[0].frame.minY - 60, width: self.buttonArray[0].frame.width, height: self.buttonArray[0].frame.height)
+            self.buttonArray[1].frame = CGRect(x: self.buttonArray[1].frame.minX + 50, y: self.buttonArray[1].frame.minY - 50, width: self.buttonArray[1].frame.width, height: self.buttonArray[1].frame.height)
+            self.buttonArray[2].frame = CGRect(x: self.buttonArray[2].frame.minX + 60, y: self.buttonArray[2].frame.minY, width: self.buttonArray[2].frame.width, height: self.buttonArray[2].frame.height)
+            self.buttonArray[3].frame = CGRect(x: self.buttonArray[3].frame.minX + 50, y: self.buttonArray[3].frame.minY + 50, width: self.buttonArray[3].frame.width, height: self.buttonArray[3].frame.height)
+            self.buttonArray[4].frame = CGRect(x: self.buttonArray[4].frame.minX, y: self.buttonArray[4].frame.minY + 60, width: self.buttonArray[4].frame.width, height: self.buttonArray[4].frame.height)
+            self.buttonArray[5].frame = CGRect(x: self.buttonArray[5].frame.minX - 50, y: self.buttonArray[5].frame.minY + 50, width: self.buttonArray[5].frame.width, height: self.buttonArray[5].frame.height)
+            self.buttonArray[6].frame = CGRect(x: self.buttonArray[6].frame.minX - 60, y: self.buttonArray[6].frame.minY, width: self.buttonArray[6].frame.width, height: self.buttonArray[6].frame.height)
+            self.buttonArray[7].frame = CGRect(x: self.buttonArray[7].frame.minX - 50, y: self.buttonArray[7].frame.minY - 50, width: self.buttonArray[7].frame.width, height: self.buttonArray[7].frame.height)
+            self.buttonArray[8].frame = CGRect(x: self.buttonArray[8].frame.minX - 50, y: self.buttonArray[8].frame.minY - 50, width: self.buttonArray[8].frame.width, height: self.buttonArray[8].frame.height)
+        }
     }
     
     private func createTenButtons() {
+        //        TODO: Fix values
+        
+        UIView.animate(withDuration: 0.5) {
+            self.buttonArray[0].frame = CGRect(x: self.buttonArray[0].frame.minX, y: self.buttonArray[0].frame.minY - 60, width: self.buttonArray[0].frame.width, height: self.buttonArray[0].frame.height)
+            self.buttonArray[1].frame = CGRect(x: self.buttonArray[1].frame.minX + 50, y: self.buttonArray[1].frame.minY - 50, width: self.buttonArray[1].frame.width, height: self.buttonArray[1].frame.height)
+            self.buttonArray[2].frame = CGRect(x: self.buttonArray[2].frame.minX + 60, y: self.buttonArray[2].frame.minY, width: self.buttonArray[2].frame.width, height: self.buttonArray[2].frame.height)
+            self.buttonArray[3].frame = CGRect(x: self.buttonArray[3].frame.minX + 50, y: self.buttonArray[3].frame.minY + 50, width: self.buttonArray[3].frame.width, height: self.buttonArray[3].frame.height)
+            self.buttonArray[4].frame = CGRect(x: self.buttonArray[4].frame.minX, y: self.buttonArray[4].frame.minY + 60, width: self.buttonArray[4].frame.width, height: self.buttonArray[4].frame.height)
+            self.buttonArray[5].frame = CGRect(x: self.buttonArray[5].frame.minX - 50, y: self.buttonArray[5].frame.minY + 50, width: self.buttonArray[5].frame.width, height: self.buttonArray[5].frame.height)
+            self.buttonArray[6].frame = CGRect(x: self.buttonArray[6].frame.minX - 60, y: self.buttonArray[6].frame.minY, width: self.buttonArray[6].frame.width, height: self.buttonArray[6].frame.height)
+            self.buttonArray[7].frame = CGRect(x: self.buttonArray[7].frame.minX - 50, y: self.buttonArray[7].frame.minY - 50, width: self.buttonArray[7].frame.width, height: self.buttonArray[7].frame.height)
+            self.buttonArray[8].frame = CGRect(x: self.buttonArray[8].frame.minX - 50, y: self.buttonArray[8].frame.minY - 50, width: self.buttonArray[8].frame.width, height: self.buttonArray[8].frame.height)
+            self.buttonArray[9].frame = CGRect(x: self.buttonArray[9].frame.minX - 50, y: self.buttonArray[9].frame.minY - 50, width: self.buttonArray[9].frame.width, height: self.buttonArray[9].frame.height)
+        }
     }
 }
