@@ -86,7 +86,7 @@ class SplittingButton: UIButton {
         setUpCancelButton()
         
         //        TODO: Change depending on state
-        animateButtonsInList(withDirection: .left, collums: 2)
+        animateButtonsInDirection(withDirection: .down)
         
     }
     
@@ -166,36 +166,26 @@ class SplittingButton: UIButton {
         }
     }
     
-    private func animateButtonsHorizontally() {
+    private func animateButtonsInDirection(withDirection: Direction) {
         
         var xOffset: CGFloat = 0
-        
-        for index in 0 ..< buttonArray.count {
-            
-            xOffset = 0 - xOffset
-            if index % 2 == 0 {
-                xOffset += self.frame.width * 2
-            }
-            
-            UIView.animate(withDuration: 0.5) {
-                self.buttonArray[index].frame = CGRect(x: self.frame.minX + xOffset, y: self.frame.minY, width: self.buttonArray[0].frame.width, height: self.buttonArray[0].frame.height)
-            }
-        }
-    }
-    
-    private func animateButtonsVertically() {
-        
         var yOffset: CGFloat = 0
         
         for index in 0 ..< buttonArray.count {
             
-            yOffset = 0 - yOffset
-            if index % 2 == 0 {
+            switch withDirection {
+            case .down:
                 yOffset += self.frame.height * 2
+            case .up:
+                yOffset -= self.frame.height * 2
+            case .right:
+                xOffset += self.frame.width * 2
+            case .left:
+                xOffset -= self.frame.width * 2
             }
             
             UIView.animate(withDuration: 0.5) {
-                self.buttonArray[index].frame = CGRect(x: self.frame.minX, y: self.frame.minY + yOffset, width: self.buttonArray[0].frame.width, height: self.buttonArray[0].frame.height)
+                self.buttonArray[index].frame = CGRect(x: self.frame.minX + xOffset, y: self.frame.minY + yOffset, width: self.buttonArray[0].frame.width, height: self.buttonArray[0].frame.height)
             }
         }
     }
@@ -208,17 +198,16 @@ class SplittingButton: UIButton {
         var lines = Double(self.buttonArray.count) / Double(collums)
         lines.round(.awayFromZero)
         
-        if withDirection == .down || withDirection == .up {
+        switch withDirection {
+        case .down:
             initialXOffset -= self.frame.width * CGFloat(collums - 1)
-            if withDirection == .up {
-                yOffset -= self.frame.height * 2 * (CGFloat(lines) + 1)
-            }
-        }
-        else if withDirection == .right {
+        case .up:
+            initialXOffset -= self.frame.width * CGFloat(collums - 1)
+            yOffset -= self.frame.height * 2 * (CGFloat(lines) + 1)
+        case .right:
             initialXOffset += self.frame.width * 2
             yOffset -= self.frame.height * CGFloat(lines + 1)
-        }
-        else if withDirection == .left {
+        case .left:
             initialXOffset -= self.frame.width * 2 * (CGFloat(collums))
             yOffset -= self.frame.height * CGFloat(lines + 1)
         }
