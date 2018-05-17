@@ -23,7 +23,7 @@ class ButtonsViewController: UIViewController {
         let frame = CGRect(x: self.view.frame.midX - 15, y: self.view.frame.midY - 15, width: 30, height: 30)
         var buttonArray: [UIButton] = []
         
-        for index in 1...5 {
+        for index in 1...14 {
             let button = UIButton()
             button.addTarget(self, action: #selector(clickedButton(sender:)), for: .touchDown)
             
@@ -75,10 +75,6 @@ class SplittingButton: UIButton {
     
     @objc func clicked(sender: UIButton) {
         
-        if self.buttonArray.count == 0 || self.buttonArray.count > 8 {
-            return
-        }
-        
         self.isHidden = true
         
         animateDarkView()
@@ -86,8 +82,8 @@ class SplittingButton: UIButton {
         addButtonsToSuperView()
         createCancelButton()
         
-//        Change depending on state
-        animateButtonsInList(withDirection: .down, collums: 3)
+        //        TODO: Change depending on state
+        animateButtonsInList(withDirection: .left, collums: 2)
         
     }
     
@@ -200,13 +196,32 @@ class SplittingButton: UIButton {
     private func animateButtonsInList(withDirection: Direction, collums: Int) {
         
         var yOffset: CGFloat = 0
-        let initialOffset: CGFloat = 0 - self.frame.width * CGFloat(collums - 1)
-        var xOffset = initialOffset
+        var initialXOffset: CGFloat = 0
+        
+        var lines = Double(self.buttonArray.count) / Double(collums)
+        lines.round(.awayFromZero)
+        
+        if withDirection == .down || withDirection == .up {
+            initialXOffset -= self.frame.width * CGFloat(collums - 1)
+            if withDirection == .up {
+                yOffset -= self.frame.height * 2 * (CGFloat(lines) + 1)
+            }
+        }
+        else if withDirection == .right {
+            initialXOffset += self.frame.width * 2
+            yOffset -= self.frame.height * CGFloat(lines + 1)
+        }
+        else if withDirection == .left {
+            initialXOffset -= self.frame.width * 2 * (CGFloat(collums))
+            yOffset -= self.frame.height * CGFloat(lines + 1)
+        }
+        
+        var xOffset = initialXOffset
         
         for index in 0 ..< buttonArray.count {
             
             if index % collums == 0 {
-                xOffset = initialOffset
+                xOffset = initialXOffset
                 yOffset += self.frame.height * 2
             } else {
                 xOffset += self.frame.width * 2
