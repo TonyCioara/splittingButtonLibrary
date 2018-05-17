@@ -56,6 +56,7 @@ class SplittingButton: UIButton {
     private var buttonArray: [UIButton] = []
     private var darkView = UIView()
     private var caller: UIViewController!
+    public var cancelButton: UIButton?
     
     init(frame: CGRect, target: UIViewController, buttonArray: [UIButton]) {
         super.init(frame: frame)
@@ -80,7 +81,9 @@ class SplittingButton: UIButton {
         animateDarkView()
         repositionButtonFrames()
         addButtonsToSuperView()
-        createCancelButton()
+        
+        
+        setUpCancelButton()
         
         //        TODO: Change depending on state
         animateButtonsInList(withDirection: .left, collums: 2)
@@ -106,11 +109,15 @@ class SplittingButton: UIButton {
         }
     }
     
-    private func createCancelButton() {
-        let button = UIButton(frame: self.frame)
-        button.setBackgroundImage(#imageLiteral(resourceName: "cancelButton"), for: UIControlState())
-        button.addTarget(self, action: #selector(cancelButtonPressed(sender:)), for: .touchDown)
-        button.alpha = 0.0
+    private func setUpCancelButton() {
+        var button = UIButton(frame: self.frame)
+        if self.cancelButton != nil {
+            button = self.cancelButton!
+        } else {
+            button.setBackgroundImage(#imageLiteral(resourceName: "cancelButton"), for: UIControlState())
+            button.addTarget(self, action: #selector(cancelButtonPressed(sender:)), for: .touchDown)
+            button.alpha = 0.0
+        }
         caller.view.addSubview(button)
         
         UIView.animate(withDuration: 0.75) {
