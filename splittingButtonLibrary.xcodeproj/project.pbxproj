@@ -13,6 +13,7 @@
 		48010E0A20A4F48C0009C1BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48010E0920A4F48C0009C1BE /* Assets.xcassets */; };
 		48010E0D20A4F48C0009C1BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48010E0B20A4F48C0009C1BE /* LaunchScreen.storyboard */; };
 		4818181A20AB53F8000CAD6E /* ButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4818181920AB53F8000CAD6E /* ButtonsViewController.swift */; };
+		48D1E52F20BE560E00BC2334 /* SplittingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D1E52E20BE560E00BC2334 /* SplittingButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		48010E0C20A4F48C0009C1BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48010E0E20A4F48C0009C1BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4818181920AB53F8000CAD6E /* ButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewController.swift; sourceTree = "<group>"; };
+		48D1E52E20BE560E00BC2334 /* SplittingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplittingButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +61,21 @@
 				48010E0220A4F48A0009C1BE /* AppDelegate.swift */,
 				48010E0420A4F48A0009C1BE /* ViewController.swift */,
 				4818181920AB53F8000CAD6E /* ButtonsViewController.swift */,
+				48D1E53020BE567300BC2334 /* SplittingButton */,
 				48010E0620A4F48A0009C1BE /* Main.storyboard */,
 				48010E0920A4F48C0009C1BE /* Assets.xcassets */,
 				48010E0B20A4F48C0009C1BE /* LaunchScreen.storyboard */,
 				48010E0E20A4F48C0009C1BE /* Info.plist */,
 			);
 			path = splittingButtonLibrary;
+			sourceTree = "<group>";
+		};
+		48D1E53020BE567300BC2334 /* SplittingButton */ = {
+			isa = PBXGroup;
+			children = (
+				48D1E52E20BE560E00BC2334 /* SplittingButton.swift */,
+			);
+			path = SplittingButton;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +151,7 @@
 			files = (
 				48010E0520A4F48A0009C1BE /* ViewController.swift in Sources */,
 				4818181A20AB53F8000CAD6E /* ButtonsViewController.swift in Sources */,
+				48D1E52F20BE560E00BC2334 /* SplittingButton.swift in Sources */,
 				48010E0320A4F48A0009C1BE /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
