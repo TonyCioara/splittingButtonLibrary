@@ -10,13 +10,17 @@ import UIKit
 
 class ButtonsViewController: UIViewController, SplittingButtonDataSource, SplittingButtonDelegate {
     
-    func didTapButtonAt(index: Int) {
-        return
+    func didTapButtonAt(button: UIButton, index: Int) {
+        UIView.animate(withDuration: 0.5) {
+            button.backgroundColor = UIColor.blue
+        }
+        UIView.animate(withDuration: 0.5, delay: 0.5, options: [], animations: {
+            button.backgroundColor = UIColor.red
+        }, completion: nil)
     }
     
     func buttonForIndexAt(index: Int) -> UIButton {
         let button = UIButton()
-        button.addTarget(self, action: #selector(clickedButton(sender:)), for: .touchDown)
         
         button.backgroundColor = UIColor.red
 //        button.setTitle(String(index), for: .normal)
@@ -40,15 +44,6 @@ class ButtonsViewController: UIViewController, SplittingButtonDataSource, Splitt
         splittingButton.delegate = self
         splittingButton.backgroundColor = UIColor.red
         self.view.addSubview(splittingButton)
-    }
-    
-    @objc func clickedButton(sender: UIButton) {
-        UIView.animate(withDuration: 0.5) {
-            sender.backgroundColor = UIColor.blue
-        }
-        UIView.animate(withDuration: 0.5, delay: 0.5, options: [], animations: {
-            sender.backgroundColor = UIColor.red
-        }, completion: nil)
     }
 }
 

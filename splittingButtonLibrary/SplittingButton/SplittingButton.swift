@@ -26,7 +26,7 @@ protocol SplittingButtonDataSource {
     func numberOfButtons() -> Int
 }
 protocol SplittingButtonDelegate {
-    func didTapButtonAt(index: Int)
+    func didTapButtonAt(button: UIButton, index: Int)
 }
 
 class SplittingButton: UIButton {
@@ -40,7 +40,6 @@ class SplittingButton: UIButton {
     
     public var cancelButton: UIButton?
     
-    
     private var target: UIViewController!
     
     public var dataSource: SplittingButtonDataSource! {
@@ -48,11 +47,26 @@ class SplittingButton: UIButton {
             buttonArray = []
             for index in 0 ..< self.dataSource.numberOfButtons() {
                 let button = self.dataSource.buttonForIndexAt(index: index)
+                button.tag = index
                 buttonArray.append(button)
+            }
+            
+            if self.delegate != nil {
+                for button in buttonArray {
+                    button.addTarget(self, action: #selector(tappedSubButton(sender:)), for: .touchDown)
+                }
+            }
+        }
+        
+    }
+    
+    public var delegate: SplittingButtonDelegate? {
+        didSet {
+            for button in buttonArray {
+                button.addTarget(self, action: #selector(tappedSubButton(sender:)), for: .touchDown)
             }
         }
     }
-    public var delegate: SplittingButtonDelegate!
     
     private init(frame: CGRect, target: UIViewController) {
         super.init(frame: frame)
@@ -88,6 +102,11 @@ class SplittingButton: UIButton {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func tappedSubButton(sender: UIButton) {
+        
+        self.delegate?.didTapButtonAt(button: sender, index: sender.tag)
     }
     
     @objc func clicked(sender: UIButton) {
