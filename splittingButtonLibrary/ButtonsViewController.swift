@@ -31,7 +31,7 @@ class ButtonsViewController: UIViewController, SplittingButtonDataSource, Splitt
     }
     
     func numberOfButtons() -> Int {
-        return 7
+        return 6
     }
     
     override func viewDidLoad() {

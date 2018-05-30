@@ -25,6 +25,7 @@ protocol SplittingButtonDataSource {
     func buttonForIndexAt(index: Int) -> UIButton
     func numberOfButtons() -> Int
 }
+
 protocol SplittingButtonDelegate {
     func didTapButtonAt(button: UIButton, index: Int)
 }
