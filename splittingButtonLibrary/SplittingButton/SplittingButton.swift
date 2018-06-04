@@ -52,9 +52,22 @@ class SplittingButton: UIButton {
     private var direction: Direction?
     private var collums: Int?
     
-    /*  To customize the cancelButton simply create a button to your liking in you view controller.
-        After that set your splittingButton.cancelButton to be the new button.  */
-    public var cancelButton: UIButton?
+    /*  To customize the cancelButton use the setCancelButtonBackgroundImage or
+        setCancelButtonTitle methods  */
+    private var cancelButton: UIButton?
+    
+    public func setCancelButtonBackgroundImage(image: UIImage) {
+        let button = UIButton(frame: self.frame)
+        button.setBackgroundImage(image, for: .normal)
+        self.cancelButton = button
+    }
+    
+    public func setCancelButtonTitle(text: String, font: UIFont) {
+        let button = UIButton(frame: self.frame)
+        button.setTitle(text, for: .normal)
+        button.titleLabel?.font = font
+        self.cancelButton = button
+    }
     
     private var target: UIViewController!
     
@@ -190,14 +203,16 @@ class SplittingButton: UIButton {
         If the cancel button isn't customized, the default one will be used.
         For information on how to customize the cancel button check lines 55-56.   */
     private func setUpCancelButton() {
-        var button = UIButton(frame: self.frame)
+        var button = UIButton()
         if self.cancelButton != nil {
             button = self.cancelButton!
         } else {
-            button.setBackgroundImage(#imageLiteral(resourceName: "cancelButton"), for: UIControlState())
-            button.addTarget(self, action: #selector(cancelButtonPressed(sender:)), for: .touchDown)
-            button.alpha = 0.0
+            button.setBackgroundImage(#imageLiteral(resourceName: "cancelButton"), for: .normal)
+            button.frame = self.frame
         }
+        
+        button.addTarget(self, action: #selector(cancelButtonPressed(sender:)), for: .touchDown)
+        button.alpha = 0.0
         self.target.view.addSubview(button)
         
         UIView.animate(withDuration: 0.75) {
