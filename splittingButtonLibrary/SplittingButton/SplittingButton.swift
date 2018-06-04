@@ -85,24 +85,24 @@ class SplittingButton: UIButton {
         self.darkView.backgroundColor = color
     }
     
-    convenience init(frame: CGRect, target: UIViewController, animateInCircle: Bool) {
-        self.init(frame: frame, target: target)
+    convenience init(animateInCircleWithFrame: CGRect, target: UIViewController) {
+        self.init(frame: animateInCircleWithFrame, target: target)
         
         self.displayMode = DisplayMode.circle
     }
     
-    convenience init(frame: CGRect, target: UIViewController, animateInDirection: Direction) {
-        self.init(frame: frame, target: target)
+    convenience init(animateInDirectionWithFrame: CGRect, target: UIViewController, direction: Direction) {
+        self.init(frame: animateInDirectionWithFrame, target: target)
         
         self.displayMode = DisplayMode.direction
-        self.direction = animateInDirection
+        self.direction = direction
     }
     
-    convenience init(frame: CGRect, target: UIViewController, animateInListWithDirection: Direction, collums: Int) {
-        self.init(frame: frame, target: target)
+    convenience init(animateInListWithFrame: CGRect, target: UIViewController, direction: Direction, collums: Int) {
+        self.init(frame: animateInListWithFrame, target: target)
         
         self.displayMode = DisplayMode.list
-        self.direction = animateInListWithDirection
+        self.direction = direction
         self.collums = collums
     }
     
