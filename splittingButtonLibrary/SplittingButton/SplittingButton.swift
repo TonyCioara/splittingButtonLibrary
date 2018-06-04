@@ -48,6 +48,7 @@ class SplittingButton: UIButton {
             buttonArray = []
             for index in 0 ..< self.dataSource.numberOfButtons() {
                 let button = self.dataSource.buttonForIndexAt(index: index)
+                button.alpha = 0.0
                 button.tag = index
                 buttonArray.append(button)
             }
@@ -78,6 +79,10 @@ class SplittingButton: UIButton {
         self.darkView.frame = self.target.view.bounds
         self.darkView.backgroundColor = UIColor.lightGray
         self.darkView.alpha = 0.0
+    }
+    
+    public func setBackgroundColor(color: UIColor) {
+        self.darkView.backgroundColor = color
     }
     
     convenience init(frame: CGRect, target: UIViewController, animateInCircle: Bool) {
@@ -112,6 +117,7 @@ class SplittingButton: UIButton {
     
     @objc func clicked(sender: UIButton) {
         
+        self.alpha = 0.0
         self.isHidden = true
         
         animateDarkView()
@@ -166,19 +172,27 @@ class SplittingButton: UIButton {
     }
     
     @objc func cancelButtonPressed(sender: UIButton) {
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
             self.darkView.alpha = 0.0
         }) { (true) in
             self.darkView.removeFromSuperview()
+        }
+        UIView.animate(withDuration: 0.25, delay: 0.15, options: .curveEaseIn, animations: {
+            self.alpha = 1.0
+        }) { (true) in
             self.isHidden = false
         }
         
         for button in buttonArray {
-            UIView.animate(withDuration: 0.5, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
                 button.frame = self.frame
             }) { (true) in
                 button.removeFromSuperview()
             }
+            
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn, animations: {
+                button.alpha = 0.0
+            }, completion: nil)
         }
         sender.removeFromSuperview()
     }
@@ -197,12 +211,15 @@ class SplittingButton: UIButton {
         
         for index in 0 ..< buttonArray.count {
             
+            self.buttonArray[index].alpha = 1.0
+            
             let xPos = sin(increment * CGFloat(index)) * radius + self.frame.midX - buttonArray[index].frame.width / 2
             let yPos = cos(increment * CGFloat(index)) * (0 - radius) + self.frame.midY - buttonArray[index].frame.height / 2
             
-            UIView.animate(withDuration: 0.5) {
-                self.buttonArray[index].frame = CGRect(x: xPos, y: yPos, width: self.buttonArray[0].frame.width, height: self.buttonArray[0].frame.height)
-            }
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+                self.buttonArray[index].alpha = 1.0
+                self.buttonArray[index].frame = CGRect(x: xPos, y: yPos, width: self.buttonArray[index].frame.width, height: self.buttonArray[index].frame.height)
+            }, completion: nil)
         }
     }
     
@@ -224,9 +241,10 @@ class SplittingButton: UIButton {
                 xOffset -= self.frame.width * 2
             }
             
-            UIView.animate(withDuration: 0.5) {
-                self.buttonArray[index].frame = CGRect(x: self.frame.minX + xOffset, y: self.frame.minY + yOffset, width: self.buttonArray[0].frame.width, height: self.buttonArray[0].frame.height)
-            }
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+                self.buttonArray[index].alpha = 1.0
+                self.buttonArray[index].frame = CGRect(x: self.frame.minX + xOffset, y: self.frame.minY + yOffset, width: self.buttonArray[index].frame.width, height: self.buttonArray[index].frame.height)
+            }, completion: nil)
         }
     }
     
@@ -237,6 +255,7 @@ class SplittingButton: UIButton {
         
         var lines = Double(self.buttonArray.count) / Double(collums!)
         lines.round(.awayFromZero)
+        
         
         switch direction! {
         case .down:
@@ -263,9 +282,10 @@ class SplittingButton: UIButton {
                 xOffset += self.frame.width * 2
             }
             
-            UIView.animate(withDuration: 0.5) {
-                self.buttonArray[index].frame = CGRect(x: self.frame.minX + xOffset, y: self.frame.minY + yOffset, width: self.buttonArray[0].frame.width, height: self.buttonArray[0].frame.height)
-            }
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+                self.buttonArray[index].alpha = 1.0
+                self.buttonArray[index].frame = CGRect(x: self.frame.minX + xOffset, y: self.frame.minY + yOffset, width: self.buttonArray[index].frame.width, height: self.buttonArray[index].frame.height)
+            }, completion: nil)
         }
     }
 }
