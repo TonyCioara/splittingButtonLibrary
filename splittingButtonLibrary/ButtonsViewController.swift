@@ -43,14 +43,14 @@ class ButtonsViewController: UIViewController, SplittingButtonDataSource, Splitt
         } else {
             button.backgroundColor = .red
         }
-        
+    
         return button
     }
     
     /*  This function comes from the SplittingButtonDataSource protocol.
         It is reponsible for determining the number of sub-buttons you want to have in the SplittingButton. */
     func numberOfButtons() -> Int {
-        return 3
+        return 8
     }
     
     /*  Setting up the label for demoing the functionality of the buttons   */
@@ -75,9 +75,11 @@ class ButtonsViewController: UIViewController, SplittingButtonDataSource, Splitt
             You may choose to animate it in a circle, a direction, or a list with collums and direction.
             Depending on your configuration you may have to restrict the number of sub-buttons.
             Uncomment the lines below and try it out for yourself.   */
+        
         let splittingButton = SplittingButton(animateInCircleWithFrame: frame, target: self)
 //        let splittingButton = SplittingButton(animateInDirectionWithFrame: frame, target: self, direction: .left)
 //        let splittingButton = SplittingButton(animateInListWithFrame: frame, target: self, direction: .down, collums: 3)
+        
         
         /*  We must set the dataSource and the delegate for the splittingButton  */
         splittingButton.dataSource = self
@@ -85,7 +87,6 @@ class ButtonsViewController: UIViewController, SplittingButtonDataSource, Splitt
         
         /*  Configure the button aesthetically and display it by adding it to the view  */
         splittingButton.setBackgroundImage(#imageLiteral(resourceName: "shareButton"), for: .normal)
-        splittingButton.layer.cornerRadius = 5
         self.view.addSubview(splittingButton)
     }
 }
